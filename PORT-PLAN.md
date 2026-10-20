@@ -394,10 +394,19 @@ were rewritten for redaction).
 
 ---
 
-## 9. Publication: prepared, not pushed
+## 9. Publication
 
-Ten commits carry the port inside the private workspace. Nothing was pushed, no
-remote was created, no pull request was opened, and no external action was taken.
+Ten commits carried the port inside the private workspace; nothing was pushed
+while the package was being built.
+
+**Published 2026-10-20** to `https://github.com/youlianvr/oper-share` as a single
+root commit, force-updated onto `master`; the two published commits were rewritten
+on 2026-10-22 to drop the tool-attribution trailers, and the tree is the
+publication tree apart from this paragraph. A clone of the public repository is
+2 309 files on one commit; `secret_gate.py` and `eval_skills.py` both exit 0 there
+and `memory.py` starts, run from that clone rather than from the workspace. The
+branch is `master` because that is the repository's existing default; the commit
+content is the tree this package held at publication.
 
 | Commit | What it carries |
 |---|---|
@@ -412,14 +421,14 @@ remote was created, no pull request was opened, and no external action was taken
 | `fad0c67c0`, `cc3894562`, `dc385ee34` | The last document defects found by reading the package as a stranger would |
 | `9de251081` | The six fixes from the cold run (§10): interpreter, git identity, `USER.md`, `--apply` consent, the untracked memory store, a portable trash |
 
-To publish, from the package folder, once the owner authorises it:
+The commands used, from the package folder:
 
 ```bash
-git init -b main
+git init -b master
 git add -A
 git commit -m "Oper: an agent workspace that keeps its word"
-git remote add origin <new empty repository>
-git push -u origin main
+git remote add origin https://github.com/youlianvr/oper-share.git
+git push --force origin master
 ```
 
 A fresh repository rather than a subtree of the private one is the point: the
