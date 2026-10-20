@@ -1,0 +1,27 @@
+# Generated and local-only files.
+
+# Python caches
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# The memory store travels with the workspace: a clone that loses it loses every
+# decision. Only SQLite's side files and the generated graph stay out.
+_memory/memora.db-wal
+_memory/memora.db-shm
+_memory/memora-graph.html
+_memory/parity/
+
+# The pentest skill ships empty form templates. The workspace-wide rules for real
+# notes (findings.md, progress.md, task_plan.md) must not swallow them here.
+!skills/security/parts/pentest-tools/templates/*.md
+
+# Local secrets and machine state
+.env
+.env.*
+!.env.example
+*.log
+node_modules/
+.DS_Store
+Thumbs.db

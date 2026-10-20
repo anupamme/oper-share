@@ -1,0 +1,15 @@
+{
+  "skill_name": "agent-refactor-safety",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Split bot.py (2500 lines) into modules: runtime, UI, pipeline, handlers. Tests must stay green; old imports from bot.py must keep working.",
+      "expected_output": "Trace affected symbols, callers, side effects and shared state before choosing extraction seams. Preserve bot.py's required public imports through a compatibility facade. Change coherent dependency slices, using explicit wiring rather than assuming bind(namespace). Run applicable existing Python checks and related consumer tests, inspect the final diff and verify after the last edit. No fixed read count or universal tool order."
+    },
+    {
+      "id": 2,
+      "prompt": "The CBT test branch has hardening fixes (charge logs, metrics, provider-debug). Port them to production without overwriting production specifics (access.py, configs, tokens).",
+      "expected_output": "Compare both versions and intended consumers before selective transfer; preserve production-specific code/config and never print tokens. Identify each desired hardening behavior and its regression checks, preserve unrelated edits and discuss unresolved consequential conflicts. Verify in isolated storage/environment with the project's applicable tools, then exercise affected interfaces within authority. Do not run tests against production storage merely because a production venv exists."
+    }
+  ]
+}

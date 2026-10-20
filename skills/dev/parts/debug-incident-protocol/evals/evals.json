@@ -1,0 +1,15 @@
+{
+  "skill_name": "debug-incident-protocol",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "A full test run hung: two timeouts (900s and 300s) burned for nothing. Localize where it hung and explain how to fix it.",
+      "expected_output": "Capture the observed hang and expected duration. Use narrow start/end markers and an owned log to localize the stage; preserve command exit status. Isolate a representative suspect with an appropriate bounded timeout rather than rerunning the whole suite. Compare environment/setup and logic hypotheses against current code and a known-working case. Do not assume infrastructure is guilty or kill unknown processes."
+    },
+    {
+      "id": 2,
+      "prompt": "User: \"the theme is still broken, the click doesn't switch it\". We fixed and verified it yesterday. What now?",
+      "expected_output": "Reproduce the exact click path in the actual browser and inspect resulting state/errors. Compare served/loaded bytes to the intended revision; consider cache, hot reload and process/profile selectors. PID age alone neither proves nor disproves freshness. Restart only an identified process within task authorization when needed, then verify readiness and the original interaction; do not mask the bug with a reload."
+    }
+  ]
+}
